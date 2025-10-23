@@ -3,20 +3,31 @@
 
 using namespace std;
 
-int countCharacter(string str);
-char input;
+int countVowel(string str);
 
 int main() {
 	string str;
-	cout << "Enter a string: " << endl;
-
-	getline(cin, str); 
-	int count = countCharacter(str);
-	cout << "Number of characters in this string: " << count << endl;
-	return 0;
+	while (true) {
+		cout << "Enter a string or Q to quit: " << endl;
+		getline(cin, str);
+		if (str == "Q" || str == "q") {
+			break;
+		}
+		int count = countVowel(str);
+		cout << "Number of vowels in this string: " << count << endl;
+	}
 }
 
-
-int countCharacter(string str) {
-	return str.length();
+int countVowel(string str) {
+	int count = 0;
+	string vowels = "aeiouAEIOU";
+	for (int i = 0; i < str.length(); i++) {
+		for (int j = 0; j < vowels.length(); j++) {
+			if (str[i] == vowels[j]) {
+				count++;
+			}
+		}
+	}
+		
+	return count;
 }
